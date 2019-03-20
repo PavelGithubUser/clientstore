@@ -10,6 +10,8 @@ import { OrdersComponent } from './tabs/orders/orders.component';
 import {ButtonModule} from 'primeng/button';
 import {GoodsService} from './services/goods.service';
 import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TabViewModule} from 'primeng/tabview';
 
 enableProdMode();
 
@@ -23,10 +25,13 @@ enableProdMode();
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AlertModule.forRoot(),
     TabsModule.forRoot(),
     ButtonModule,
     HttpClientModule,
+    ButtonModule,
+    TabViewModule
   ],
   providers: [GoodsService],
   bootstrap: [AppComponent]

@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { GoodsComponent } from './tabs/goods/goods.component';
 import { OrdersComponent } from './tabs/orders/orders.component';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { OrdersComponent } from './tabs/orders/orders.component';
     BrowserModule,
     AlertModule.forRoot(),
     TabsModule.forRoot(),
+    ButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

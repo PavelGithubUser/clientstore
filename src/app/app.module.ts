@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {enableProdMode, NgModule} from '@angular/core';
 import {AlertModule, TabsModule} from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
@@ -8,6 +8,10 @@ import { TabsComponent } from './tabs/tabs.component';
 import { GoodsComponent } from './tabs/goods/goods.component';
 import { OrdersComponent } from './tabs/orders/orders.component';
 import {ButtonModule} from 'primeng/button';
+import {GoodsService} from './services/goods.service';
+import {HttpClientModule} from '@angular/common/http';
+
+enableProdMode();
 
 @NgModule({
   declarations: [
@@ -22,8 +26,9 @@ import {ButtonModule} from 'primeng/button';
     AlertModule.forRoot(),
     TabsModule.forRoot(),
     ButtonModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [GoodsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

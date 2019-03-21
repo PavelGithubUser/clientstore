@@ -16,6 +16,7 @@ import { EditgoodsComponent } from './tabs/goods/editgoods/editgoods.component';
 import {DialogModule} from 'primeng/dialog';
 import {ChipsModule} from 'primeng/chips';
 import {FormsModule} from '@angular/forms';
+import { AddgoodComponent } from './tabs/goods/addgood/addgood.component';
 
 enableProdMode();
 
@@ -27,6 +28,7 @@ enableProdMode();
     GoodsComponent,
     OrdersComponent,
     EditgoodsComponent,
+    AddgoodComponent,
   ],
   imports: [
     BrowserModule,

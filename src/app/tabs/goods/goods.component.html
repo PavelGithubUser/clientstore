@@ -1,4 +1,5 @@
 <div class="table-goods">
+  <div *ngIf="responseStatus == 500">Error of delete. Status error:{{responseStatus}}</div>
 <table class="table table-striped table-dark">
   <thead>
   <tr>
@@ -15,7 +16,11 @@
     <td>
       <app-editgoods [goodModel]="goodModel"></app-editgoods>
     </td>
-    <td><button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger"></button></td>
+    <td><button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger"
+                (click)="deleteGood(goodModel.id)">
+
+        </button>
+    </td>
   </tr>
   </tbody>
 </table>

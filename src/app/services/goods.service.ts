@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {GoodModel} from '../model/good.model';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +16,16 @@ export class GoodsService {
     return this.http.get<GoodModel[]>(this.userUrl + 'all');
   }
 
-  public saveGood(goodModel: GoodModel): Observable<GoodModel> {
-    return this.http.post<GoodModel>(this.userUrl + 'save', goodModel);
+  public saveGood(goodModel: GoodModel): Observable<any> {
+    return this.http.post<any>(this.userUrl + 'save', goodModel, {
+      observe: 'response'
+    });
   }
 
-  public deleteGoodById(id: number): Observable<boolean> {
-    return this.http.delete<boolean>(this.userUrl + 'delete/' + id);
+  public deleteGoodById(id: number): Observable<any> {
+    return this.http.delete<any>(this.userUrl + 'delete/' + id, {
+      observe: 'response'
+    });
   }
 
   public getGoodById(id: number): Observable<GoodModel> {

@@ -12,6 +12,10 @@ import {GoodsService} from './services/goods.service';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TabViewModule} from 'primeng/tabview';
+import { EditgoodsComponent } from './tabs/goods/editgoods/editgoods.component';
+import {DialogModule} from 'primeng/dialog';
+import {ChipsModule} from 'primeng/chips';
+import {FormsModule} from '@angular/forms';
 
 enableProdMode();
 
@@ -21,7 +25,8 @@ enableProdMode();
     HeaderComponent,
     TabsComponent,
     GoodsComponent,
-    OrdersComponent
+    OrdersComponent,
+    EditgoodsComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,10 @@ enableProdMode();
     ButtonModule,
     HttpClientModule,
     ButtonModule,
-    TabViewModule
+    TabViewModule,
+    DialogModule,
+    ChipsModule,
+    FormsModule
   ],
   providers: [GoodsService],
   bootstrap: [AppComponent]

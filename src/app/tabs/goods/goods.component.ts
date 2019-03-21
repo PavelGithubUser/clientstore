@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {GoodsService} from '../../services/goods.service';
 import {GoodModel} from '../../model/good.model';
+import {EditgoodsComponent} from './editgoods/editgoods.component';
 
 @Component({
   selector: 'app-goods',

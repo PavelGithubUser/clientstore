@@ -12,9 +12,12 @@
   <tr *ngFor="let goodModel of goodModels">
     <td>{{goodModel.name}}</td>
     <td>{{goodModel.price}}$</td>
-    <td><button pButton type="button" label="Edit" class="ui-button-rounded"></button></td>
+    <td>
+      <app-editgoods [goodModel]="goodModel"></app-editgoods>
+    </td>
     <td><button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger"></button></td>
   </tr>
   </tbody>
 </table>
 </div>
+

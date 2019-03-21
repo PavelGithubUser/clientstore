@@ -2,13 +2,12 @@
 <button pButton type="button" label="Edit" class="ui-button-rounded" (click)="show()"></button>
 
 <p-dialog header="Edit good" [(visible)]="display" class="edit-dialog">
-
   <label for="good-name" class="col-form-label">Name:</label>
   <input type="text" class="form-control" id="good-name" value="{{name}}" (keyup) = "changeName($event)">
 
   <label for="good-price" class="col-form-label">Price:</label>
   <input type="text" class="form-control" id="good-price" value="{{price}}" (keyup) = "changePrice($event)">
-
+  <div *ngIf="responseStatus == 500">Status error{{responseStatus}}</div>
   <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary" (click)="close()" id="button-close"></button>
   <button pButton type="button" label="Save" class="ui-button-raised" (click)="updateGood()" id="button-save"></button>
 </p-dialog>

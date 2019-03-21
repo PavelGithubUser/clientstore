@@ -1,6 +1,7 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {GoodModel} from '../../../model/good.model';
 import {GoodsService} from '../../../services/goods.service';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-editgoods',
@@ -14,10 +15,13 @@ export class EditgoodsComponent implements OnInit {
   display = false;
   name: string;
   price: number;
+  responseStatus: number;
 
-  constructor(private goodsService: GoodsService) { }
+  constructor(private goodsService: GoodsService) {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   show() {
     this.name = this.goodModel.name;
@@ -27,31 +31,34 @@ export class EditgoodsComponent implements OnInit {
 
   close() {
     this.goodModel.name = this.name;
-    this.goodModel.price = this.price ;
+    this.goodModel.price = this.price;
     this.display = false;
   }
 
   changeName(event) {
     if (event.target.value !== this.goodModel.name) {
       this.goodModel.name = event.target.value;
-      // this.goodModel.name = event.target.value;
     }
   }
 
   changePrice(event) {
     if (event.target.value !== this.goodModel.price) {
       this.goodModel.price = event.target.value;
-      // this.goodModel.price = event.target.value;
     }
   }
 
   updateGood() {
-    this.goodsService.saveGood(this.goodModel).subscribe(goodModel => {
-      if (goodModel !== null) {
-        this.goodModel.name = this.name;
-        this.goodModel.price = this.price;
-        this.display = false;
+    this.goodsService.saveGood(this.goodModel).subscribe(response => {
+      if (response instanceof HttpResponse) {
+        this.responseStatus = response.status;
       }
+      this.display = false;
+    }, error => {
+      if (error instanceof HttpErrorResponse) {
+        this.responseStatus = error.status;
+      }
+      this.goodModel.name = this.name;
+      this.goodModel.price = this.price;
     });
   }
 

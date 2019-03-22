@@ -18,6 +18,7 @@ import {ChipsModule} from 'primeng/chips';
 import {FormsModule} from '@angular/forms';
 import { AddgoodComponent } from './tabs/goods/addgood/addgood.component';
 import { EditorderComponent } from './tabs/orders/editorder/editorder.component';
+import { AddorderComponent } from './tabs/orders/addorder/addorder.component';
 
 enableProdMode();
 
@@ -31,6 +32,7 @@ enableProdMode();
     EditgoodsComponent,
     AddgoodComponent,
     EditorderComponent,
+    AddorderComponent,
   ],
   imports: [
     BrowserModule,

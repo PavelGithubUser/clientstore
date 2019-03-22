@@ -1,0 +1,14 @@
+<button pButton type="button" label="Add order" class="ui-button-raised ui-button-success button-add-order"
+        (click)="show()">
+</button>
+
+<p-dialog header="Add order" [(visible)]="display" class="edit-dialog">
+  <label for="order-client" class="col-form-label">Client:</label>
+  <input type="text" class="form-control" id="order-client" value="{{orderModel.client}}" [(ngModel)] = orderModel.client>
+
+  <label for="order-address" class="col-form-label">Address:</label>
+  <input type="text" class="form-control" id="order-address" value="{{orderModel.address}}" [(ngModel)] = orderModel.address>
+  <div *ngIf="responseStatus == 500">Adding error. Status error: {{responseStatus}}</div>
+  <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary" (click)="close()" id="button-close"></button>
+  <button pButton type="button" label="Add" class="ui-button-raised" (click)="addOrder()" id="button-add"></button>
+</p-dialog>

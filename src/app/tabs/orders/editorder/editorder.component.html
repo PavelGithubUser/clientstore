@@ -1,0 +1,12 @@
+<button pButton type="button" label="Edit" class="ui-button-rounded" (click)="show()"></button>
+
+<p-dialog header="Edit order" [(visible)]="display" class="edit-dialog">
+  <label for="order-client" class="col-form-label">Client:</label>
+  <input type="text" class="form-control" id="order-client" value="{{client}}" (keyup) = "changeClient($event)">
+
+  <label for="order-address" class="col-form-label">Address:</label>
+  <input type="text" class="form-control" id="order-address" value="{{address}}" (keyup) = "changeAddress($event)">
+  <div *ngIf="responseStatus == 500">Status error{{responseStatus}}</div>
+  <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary" (click)="close()" id="button-close"></button>
+  <button pButton type="button" label="Save" class="ui-button-raised" (click)="updateOrder()" id="button-save"></button>
+</p-dialog>

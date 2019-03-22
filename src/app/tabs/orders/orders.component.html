@@ -14,7 +14,7 @@
       <td>{{orderModel.client}}</td>
       <td>{{orderModel.address}}</td>
       <td>
-
+        <app-editorder [orderModel]="orderModel"></app-editorder>
       </td>
       <td><button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger"
                   (click)="deleteOrder(orderModel.id)">

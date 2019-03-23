@@ -18,6 +18,7 @@ export class EditOrderGoodLineComponent implements OnInit {
   notAddGoodModels: GoodModel[];
 
   display = false;
+  responseStatus: number;
 
   constructor(private goodsService: GoodsService) { }
 

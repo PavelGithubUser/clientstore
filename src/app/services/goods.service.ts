@@ -32,4 +32,8 @@ export class GoodsService {
     return this.http.get<GoodModel>(this.userUrl + 'get/' + id);
   }
 
+  public getAllNotAddToOrder(id: number): Observable<GoodModel[]> {
+    return this.http.get<GoodModel[]>(this.userUrl + 'allnotaddtoorder/' + id);
+  }
+
 }

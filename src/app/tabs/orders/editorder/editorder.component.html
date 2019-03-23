@@ -9,7 +9,7 @@
   <div *ngIf="responseStatus == 500">Status error{{responseStatus}}</div>
 
   <app-order-good-line [orderLineModels]="orderLineModels"></app-order-good-line>
-  <app-edit-order-good-line [orderLineModels]="orderLineModels"></app-edit-order-good-line>
+  <app-edit-order-good-line [orderId]="orderModel.id" [orderLineModels]="orderLineModels"></app-edit-order-good-line>
   <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary" (click)="close()" id="button-close"></button>
   <button pButton type="button" label="Save" class="ui-button-raised" (click)="updateOrder()" id="button-save"></button>
 

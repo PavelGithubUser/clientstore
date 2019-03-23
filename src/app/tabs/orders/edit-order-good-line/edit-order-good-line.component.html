@@ -1,9 +1,5 @@
 <button pButton type="button" label="Edit" class="ui-button-raised ui-button-warning button-add-good" (click)="show()"></button>
 
-<!--<button pButton type="button" label="Add good" class="ui-button-raised ui-button-success button-add-good"-->
-        <!--(click)="show()">-->
-<!--</button>-->
-
 <p-dialog header="Edit goods in order" [(visible)]="display" class="edit-order-good-dialog">
 
   <div class="container">
@@ -25,7 +21,7 @@
             <td><p-spinner size="5" [(ngModel)]="orderLineModel.count" [min]="1"></p-spinner></td>
             <td>
               <button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger"
-                      (click)="deleteOrder(orderLineModel.id)">
+                      (click)="deleteGoodFromOrder(orderLineModel.id)">
               </button>
             </td>
           </tr>
@@ -43,12 +39,12 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let orderLineModel of orderLineModels">
-            <td>{{orderLineModel.goodDTO.name}}</td>
-            <td>{{orderLineModel.goodDTO.price}}$</td>
+          <tr *ngFor="let goodModel of notAddGoodModels">
+            <td>{{goodModel.name}}</td>
+            <td>{{goodModel.price}}$</td>
             <td>
               <button pButton type="button" label="Add" class="ui-button-rounded ui-button-success"
-                      (click)="addGoodToOrder(orderModel.id)">
+                      (click)="addGoodToOrder(goodModel)">
               </button>
             </td>
           </tr>

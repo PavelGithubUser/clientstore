@@ -16,10 +16,8 @@ export class GoodsService {
     return this.http.get<GoodModel[]>(this.userUrl + 'all');
   }
 
-  public saveGood(goodModel: GoodModel): Observable<any> {
-    return this.http.post<any>(this.userUrl + 'save', goodModel, {
-      observe: 'response'
-    });
+  public saveGood(goodModel: GoodModel): Observable<GoodModel> {
+    return this.http.post<GoodModel>(this.userUrl + 'save', goodModel);
   }
 
   public deleteGoodById(id: number): Observable<any> {

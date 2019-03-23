@@ -15,10 +15,8 @@ export class OrdersService {
     return this.http.get<OrderModel[]>(this.userUrl + 'all');
   }
 
-  public saveOrder(orderModel: OrderModel): Observable<any> {
-    return this.http.post<any>(this.userUrl + 'save', orderModel, {
-      observe: 'response'
-    });
+  public saveOrder(orderModel: OrderModel): Observable<OrderModel> {
+    return this.http.post<OrderModel>(this.userUrl + 'save', orderModel);
   }
 
   public deleteOrderById(id: number): Observable<any> {

@@ -14,6 +14,7 @@ export class GoodsComponent implements OnInit {
 
   goodModels: GoodModel[];
   responseStatus: number;
+  messageError: string;
 
   ngOnInit() {
     this.initGoodModels();
@@ -25,6 +26,7 @@ export class GoodsComponent implements OnInit {
     }, error => {
       if (error instanceof HttpErrorResponse) {
         this.responseStatus = error.status;
+        this.messageError = 'Getting error of good.';
       }
     });
   }
@@ -39,6 +41,7 @@ export class GoodsComponent implements OnInit {
       }, error => {
         if (error instanceof HttpErrorResponse) {
           this.responseStatus = error.status;
+          this.messageError = 'Deleting error of good.';
         }
     });
   }

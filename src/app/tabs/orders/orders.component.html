@@ -1,5 +1,5 @@
 <div class="table-orders">
-  <div *ngIf="responseStatus == 500">Error of delete. Status error:{{responseStatus}}</div>
+  <div *ngIf="responseStatus == 500">{{messageError}}. Status error:{{responseStatus}}</div>
   <table class="table table-striped table-dark">
     <thead>
     <tr>

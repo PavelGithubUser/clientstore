@@ -19,6 +19,7 @@ export class EditorderComponent implements OnInit {
   client: string;
   address: string;
   responseStatus: number;
+  messageError: string;
 
   constructor(private ordersService: OrdersService, private orderLineService: OrderLineService) {
   }
@@ -39,6 +40,7 @@ export class EditorderComponent implements OnInit {
     }, error => {
       if (error instanceof HttpErrorResponse) {
         this.responseStatus = error.status;
+        this.messageError = 'Error of getting order.';
       }
     });
   }
@@ -73,6 +75,7 @@ export class EditorderComponent implements OnInit {
       }
       this.orderModel.client = this.client;
       this.orderModel.address = this.address;
+      this.messageError = 'Error of updating order.';
     });
   }
 

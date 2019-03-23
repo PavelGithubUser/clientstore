@@ -15,6 +15,7 @@ export class AddgoodComponent implements OnInit {
   goodModels: GoodModel[];
   goodModel: GoodModel;
   responseStatus: number;
+  messageError: string;
   display = false;
 
   constructor(private goodsService: GoodsService) { }
@@ -39,6 +40,7 @@ export class AddgoodComponent implements OnInit {
     }, error => {
       if (error instanceof HttpErrorResponse) {
         this.responseStatus = error.status;
+        this.messageError = 'Saving error of good.';
       }
     });
   }

@@ -14,6 +14,7 @@ export class OrdersComponent implements OnInit {
 
   orderModels: OrderModel[];
   responseStatus: number;
+  messageError: string;
 
   ngOnInit() {
     this.initOrderModels();
@@ -25,6 +26,7 @@ export class OrdersComponent implements OnInit {
     }, error => {
       if (error instanceof HttpErrorResponse) {
         this.responseStatus = error.status;
+        this.messageError = 'Error of getting order.';
       }
     });
   }
@@ -39,6 +41,7 @@ export class OrdersComponent implements OnInit {
     }, error => {
       if (error instanceof HttpErrorResponse) {
         this.responseStatus = error.status;
+        this.messageError = 'Error of deleting order.';
       }
     });
   }

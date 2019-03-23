@@ -1,7 +1,7 @@
 <button pButton type="button" label="Edit" class="ui-button-raised ui-button-warning button-add-good" (click)="show()"></button>
 
 <p-dialog header="Edit goods in order" [(visible)]="display" class="edit-order-good-dialog">
-
+  <div *ngIf="responseStatus == 500">{{messageError}}. Status error: {{responseStatus}}</div>
   <div class="container">
     <div class="row">
       <div class="col">

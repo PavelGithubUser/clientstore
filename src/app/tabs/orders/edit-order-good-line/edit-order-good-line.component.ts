@@ -21,6 +21,7 @@ export class EditOrderGoodLineComponent implements OnInit {
 
   display = false;
   responseStatus: number;
+  messageError: string;
 
   constructor(private goodsService: GoodsService, private orderLineService: OrderLineService) {
   }
@@ -42,6 +43,7 @@ export class EditOrderGoodLineComponent implements OnInit {
         }, error => {
           if (error instanceof HttpErrorResponse) {
             this.responseStatus = error.status;
+            this.messageError = 'Getting error did not goods to order.';
           }
         });
       }
@@ -49,6 +51,7 @@ export class EditOrderGoodLineComponent implements OnInit {
     }, error => {
       if (error instanceof HttpErrorResponse) {
         this.responseStatus = error.status;
+        this.messageError = 'Getting error did not goods to order.';
       }
     });
 
@@ -65,6 +68,7 @@ export class EditOrderGoodLineComponent implements OnInit {
     }, error => {
       if (error instanceof HttpErrorResponse) {
         this.responseStatus = error.status;
+        this.messageError = 'Error of deleting good from order.';
       }
     });
   }
@@ -81,6 +85,7 @@ export class EditOrderGoodLineComponent implements OnInit {
     }, error => {
       if (error instanceof HttpErrorResponse) {
         this.responseStatus = error.status;
+        this.messageError = 'Error of adding good to order.';
       }
     });
   }

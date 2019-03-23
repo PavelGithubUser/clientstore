@@ -16,6 +16,7 @@ export class EditgoodsComponent implements OnInit {
   name: string;
   price: number;
   responseStatus: number;
+  messageError: string;
 
   constructor(private goodsService: GoodsService) {
   }
@@ -59,6 +60,7 @@ export class EditgoodsComponent implements OnInit {
       }
       this.goodModel.name = this.name;
       this.goodModel.price = this.price;
+      this.messageError = 'Updating error of good.';
     });
   }
 

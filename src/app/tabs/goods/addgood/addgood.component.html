@@ -8,7 +8,7 @@
 
   <label for="good-price" class="col-form-label">Price:</label>
   <input type="text" class="form-control" id="good-price" value="{{goodModel.price}}" [(ngModel)] = goodModel.price>
-  <div *ngIf="responseStatus == 500">Adding error. Status error: {{responseStatus}}</div>
+  <div *ngIf="responseStatus == 500">{{messageError}}. Status error: {{responseStatus}}</div>
   <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary" (click)="close()" id="button-close"></button>
   <button pButton type="button" label="Add" class="ui-button-raised" (click)="addGood()" id="button-add"></button>
 </p-dialog>

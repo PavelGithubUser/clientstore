@@ -14,6 +14,7 @@ export class AddorderComponent implements OnInit {
   orderModels: OrderModel[];
   orderModel: OrderModel;
   responseStatus: number;
+  messageError: string;
   display = false;
 
   constructor(private ordersService: OrdersService) { }
@@ -38,6 +39,7 @@ export class AddorderComponent implements OnInit {
     }, error => {
       if (error instanceof HttpErrorResponse) {
         this.responseStatus = error.status;
+        this.messageError = 'Saving error of order.';
       }
     });
   }

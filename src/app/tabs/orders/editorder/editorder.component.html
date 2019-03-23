@@ -6,7 +6,7 @@
 
   <label for="order-address" class="col-form-label">Address:</label>
   <input type="text" class="form-control" id="order-address" value="{{address}}" (keyup) = "changeAddress($event)">
-  <div *ngIf="responseStatus == 500">Status error{{responseStatus}}</div>
+  <div *ngIf="responseStatus == 500">{{messageError}} Status error{{responseStatus}}</div>
 
   <app-order-good-line [orderLineModels]="orderLineModels"></app-order-good-line>
   <app-edit-order-good-line [orderId]="orderModel.id" [orderLineModels]="orderLineModels"></app-edit-order-good-line>

@@ -9,4 +9,31 @@
   <div *ngIf="responseStatus == 500">Status error{{responseStatus}}</div>
   <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary" (click)="close()" id="button-close"></button>
   <button pButton type="button" label="Save" class="ui-button-raised" (click)="updateOrder()" id="button-save"></button>
+
+  <table class="table table-striped table-dark">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Count</th>
+      <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let orderLineModel of orderLineModels">
+      <td>{{orderLineModel.goodDTO.name}}</td>
+      <td>{{orderLineModel.goodDTO.price * orderLineModel.count}}$</td>
+      <td>
+        <p-spinner size="30" [(ngModel)]="orderLineModel.count" [min]="1" size="5"></p-spinner>
+      </td>
+      <td>
+        <!--<button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger"-->
+        <!--(click)="deleteGood(goodModel.id)">-->
+        <!--</button>-->
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+
 </p-dialog>

@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {OrderModel} from '../../../model/order.model';
 import {OrdersService} from '../../../services/orders.service';
 import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {OrderLineModel} from '../../../model/order.line.model';
+import {OrderLineService} from '../../../services/order-line.service';
 
 @Component({
   selector: 'app-editorder',
@@ -11,22 +13,30 @@ import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 export class EditorderComponent implements OnInit {
   @Input()
   orderModel: OrderModel;
+  orderLineModels: OrderLineModel[];
 
   display = false;
   client: string;
   address: string;
   responseStatus: number;
 
-  constructor(private ordersService: OrdersService) {
+  constructor(private ordersService: OrdersService, private orderLineService: OrderLineService) {
   }
 
   ngOnInit() {
   }
 
   show() {
+    this.initOrderLineModel();
     this.client = this.orderModel.client;
     this.address = this.orderModel.address;
     this.display = true;
+  }
+
+  initOrderLineModel() {
+    this.orderLineService.getOrderLineByOrderId(this.orderModel.id).subscribe(orderLineModels => {
+      this.orderLineModels = orderLineModels;
+    });
   }
 
   close() {

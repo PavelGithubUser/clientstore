@@ -22,6 +22,10 @@ export class OrdersComponent implements OnInit {
   initOrderModels() {
     this.ordersService.getAllOrders().subscribe(orders => {
       this.orderModels = orders;
+    }, error => {
+      if (error instanceof HttpErrorResponse) {
+        this.responseStatus = error.status;
+      }
     });
   }
 

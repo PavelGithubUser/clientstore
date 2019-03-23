@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {OrderLineModel} from '../../../model/order.line.model';
 import {GoodModel} from '../../../model/good.model';
 import {GoodsService} from '../../../services/goods.service';
+import {OrderLineService} from '../../../services/order-line.service';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-order-good-line',
@@ -37,9 +39,17 @@ export class EditOrderGoodLineComponent implements OnInit {
       if (goodModelsNotAddToOrder.length === 0 && this.orderLineModels.length === 0) {
         this.goodsService.getAllGoods().subscribe(goodModels => {
           this.notAddGoodModels = goodModels;
+        }, error => {
+          if (error instanceof HttpErrorResponse) {
+            this.responseStatus = error.status;
+          }
         });
       }
       this.display = true;
+    }, error => {
+      if (error instanceof HttpErrorResponse) {
+        this.responseStatus = error.status;
+      }
     });
 
   }

@@ -22,6 +22,10 @@ export class GoodsComponent implements OnInit {
   initGoodModels() {
     this.goodsService.getAllGoods().subscribe(goods => {
       this.goodModels = goods;
+    }, error => {
+      if (error instanceof HttpErrorResponse) {
+        this.responseStatus = error.status;
+      }
     });
   }
 

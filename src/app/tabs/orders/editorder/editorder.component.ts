@@ -36,6 +36,10 @@ export class EditorderComponent implements OnInit {
   initOrderLineModel() {
     this.orderLineService.getOrderLineByOrderId(this.orderModel.id).subscribe(orderLineModels => {
       this.orderLineModels = orderLineModels;
+    }, error => {
+      if (error instanceof HttpErrorResponse) {
+        this.responseStatus = error.status;
+      }
     });
   }
 

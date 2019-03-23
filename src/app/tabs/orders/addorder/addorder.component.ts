@@ -23,6 +23,7 @@ export class AddorderComponent implements OnInit {
   }
 
   show() {
+    this.orderModel = {id: null, client: '', date: null, address: ''};
     this.display = true;
   }
 
@@ -31,11 +32,8 @@ export class AddorderComponent implements OnInit {
   }
 
   addOrder() {
-    this.ordersService.saveOrder(this.orderModel).subscribe(response => {
-      if (response instanceof HttpResponse) {
-        this.responseStatus = response.status;
-      }
-      this.orderModels.push(this.orderModel);
+    this.ordersService.saveOrder(this.orderModel).subscribe(orderModel => {
+      this.orderModels.push(orderModel);
       this.display = false;
     }, error => {
       if (error instanceof HttpErrorResponse) {

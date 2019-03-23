@@ -20,6 +20,8 @@ import { AddgoodComponent } from './tabs/goods/addgood/addgood.component';
 import { EditorderComponent } from './tabs/orders/editorder/editorder.component';
 import { AddorderComponent } from './tabs/orders/addorder/addorder.component';
 import {SpinnerModule} from 'primeng/spinner';
+import { OrderGoodLineComponent } from './tabs/orders/order-good-line/order-good-line.component';
+import { EditOrderGoodLineComponent } from './tabs/orders/edit-order-good-line/edit-order-good-line.component';
 
 enableProdMode();
 
@@ -34,6 +36,8 @@ enableProdMode();
     AddgoodComponent,
     EditorderComponent,
     AddorderComponent,
+    OrderGoodLineComponent,
+    EditOrderGoodLineComponent,
   ],
   imports: [
     BrowserModule,

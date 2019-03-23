@@ -5,6 +5,7 @@
     <tr>
       <th scope="col">Client</th>
       <th scope="col">Address</th>
+      <th scope="col">Date</th>
       <th scope="col">Edit</th>
       <th scope="col">Delete</th>
     </tr>
@@ -13,6 +14,7 @@
     <tr *ngFor="let orderModel of orderModels">
       <td>{{orderModel.client}}</td>
       <td>{{orderModel.address}}</td>
+      <td>{{orderModel.date}}</td>
       <td>
         <app-editorder [orderModel]="orderModel"></app-editorder>
       </td>

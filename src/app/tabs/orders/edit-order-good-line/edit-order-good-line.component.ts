@@ -44,10 +44,35 @@ export class EditOrderGoodLineComponent implements OnInit {
 
   }
 
-  deleteGoodFromOrder(id: number) {
+  deleteGoodFromOrder(orderLineModelFromOrder: OrderLineModel) {
+    this.orderLineService.deleteOrderLineById(orderLineModelFromOrder.id).subscribe(response => {
+      if (response instanceof HttpResponse) {
+        this.orderLineModels.splice(this.orderLineModels.findIndex(
+          orderLineModel => orderLineModel.id === orderLineModelFromOrder.id), 1
+        );
+        this.notAddGoodModels.push(orderLineModelFromOrder.goodDTO);
+      }
+    }, error => {
+      if (error instanceof HttpErrorResponse) {
+        this.responseStatus = error.status;
+      }
+    });
   }
 
   addGoodToOrder(goodModel: GoodModel) {
+    const orderLineModel = {id: null, count: 1, idOrderEntity: this.orderId, goodDTO: goodModel};
+    this.orderLineService.saveOrderLine(orderLineModel).subscribe(response => {
+      if (response instanceof HttpResponse) {
+        this.orderLineModels.push(orderLineModel);
+        this.notAddGoodModels.splice(this.notAddGoodModels.findIndex(
+          goodModelNotAdd => goodModelNotAdd.id === goodModel.id), 1
+        );
+      }
+    }, error => {
+      if (error instanceof HttpErrorResponse) {
+        this.responseStatus = error.status;
+      }
+    });
   }
 
 }

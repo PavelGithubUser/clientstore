@@ -20,21 +20,28 @@ export class EditOrderGoodLineComponent implements OnInit {
   display = false;
   responseStatus: number;
 
-  constructor(private goodsService: GoodsService) { }
+  constructor(private goodsService: GoodsService, private orderLineService: OrderLineService) {
+  }
 
   ngOnInit() {
   }
 
   show() {
     this.initNotAddGoodModels();
-    this.display = true;
   }
 
 
   initNotAddGoodModels() {
-    this.goodsService.getAllNotAddToOrder(this.orderId).subscribe(googModels => {
-      this.notAddGoodModels = googModels;
+    this.goodsService.getAllNotAddToOrder(this.orderId).subscribe(goodModelsNotAddToOrder => {
+      this.notAddGoodModels = goodModelsNotAddToOrder;
+      if (goodModelsNotAddToOrder.length === 0 && this.orderLineModels.length === 0) {
+        this.goodsService.getAllGoods().subscribe(goodModels => {
+          this.notAddGoodModels = goodModels;
+        });
+      }
+      this.display = true;
     });
+
   }
 
   deleteGoodFromOrder(id: number) {

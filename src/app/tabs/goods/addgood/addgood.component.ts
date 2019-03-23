@@ -24,6 +24,7 @@ export class AddgoodComponent implements OnInit {
   }
 
   show() {
+    this.goodModel = {id: null, name: '', price: 0};
     this.display = true;
   }
 
@@ -32,11 +33,8 @@ export class AddgoodComponent implements OnInit {
   }
 
   addGood() {
-    this.goodsService.saveGood(this.goodModel).subscribe(response => {
-      if (response instanceof HttpResponse) {
-        this.responseStatus = response.status;
-      }
-      this.goodModels.push(this.goodModel);
+    this.goodsService.saveGood(this.goodModel).subscribe(goodModel => {
+      this.goodModels.push(goodModel);
       this.display = false;
     }, error => {
       if (error instanceof HttpErrorResponse) {

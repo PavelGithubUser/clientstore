@@ -1,0 +1,61 @@
+<button pButton type="button" label="Edit" class="ui-button-raised ui-button-warning button-add-good" (click)="show()"></button>
+
+<!--<button pButton type="button" label="Add good" class="ui-button-raised ui-button-success button-add-good"-->
+        <!--(click)="show()">-->
+<!--</button>-->
+
+<p-dialog header="Edit goods in order" [(visible)]="display" class="edit-order-good-dialog">
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Count</th>
+            <th scope="col">Delete</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let orderLineModel of orderLineModels">
+            <td>{{orderLineModel.goodDTO.name}}</td>
+            <td>{{orderLineModel.goodDTO.price * orderLineModel.count}}$</td>
+            <td><p-spinner size="5" [(ngModel)]="orderLineModel.count" [min]="1"></p-spinner></td>
+            <td>
+              <button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger"
+                      (click)="deleteOrder(orderLineModel.id)">
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Add</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let orderLineModel of orderLineModels">
+            <td>{{orderLineModel.goodDTO.name}}</td>
+            <td>{{orderLineModel.goodDTO.price}}$</td>
+            <td>
+              <button pButton type="button" label="Add" class="ui-button-rounded ui-button-success"
+                      (click)="addGoodToOrder(orderModel.id)">
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</p-dialog>

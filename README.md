@@ -3,7 +3,7 @@ This project is an exmple of client of store using Angular 7. Client sends and r
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
 
 # Auxiliary librarys
-Bootstrap
+Bootstrap,
 PrimeNG
 
 ## Development server

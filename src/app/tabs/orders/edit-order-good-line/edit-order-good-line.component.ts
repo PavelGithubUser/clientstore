@@ -74,13 +74,24 @@ export class EditOrderGoodLineComponent implements OnInit {
   }
 
   addGoodToOrder(goodModel: GoodModel) {
-    const orderLineModel = {id: null, count: 1, idOrderEntity: this.orderId, goodDTO: goodModel};
-    this.orderLineService.saveOrderLine(orderLineModel).subscribe(response => {
-      if (response instanceof HttpResponse) {
-        this.orderLineModels.push(orderLineModel);
+    const orderLineModel = {id: null, count: 1, orderEntityId: this.orderId, goodDTO: goodModel};
+    this.orderLineService.saveOrderLine(orderLineModel).subscribe(orderLineModelFromServer => {
+        this.orderLineModels.push(orderLineModelFromServer);
         this.notAddGoodModels.splice(this.notAddGoodModels.findIndex(
           goodModelNotAdd => goodModelNotAdd.id === goodModel.id), 1
         );
+    }, error => {
+      if (error instanceof HttpErrorResponse) {
+        this.responseStatus = error.status;
+        this.messageError = 'Error of adding good to order.';
+      }
+    });
+  }
+
+  updateOrderLine(orderLineModel: OrderLineModel) {
+    this.orderLineService.updateOrderLine(orderLineModel).subscribe(response => {
+      if (response instanceof HttpResponse) {
+        this.responseStatus = response.status;
       }
     }, error => {
       if (error instanceof HttpErrorResponse) {

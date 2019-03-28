@@ -18,7 +18,7 @@
           <tr *ngFor="let orderLineModel of orderLineModels">
             <td>{{orderLineModel.goodDTO.name}}</td>
             <td>{{orderLineModel.goodDTO.price * orderLineModel.count}}$</td>
-            <td><p-spinner size="5" [(ngModel)]="orderLineModel.count" [min]="1"></p-spinner></td>
+            <td><p-spinner size="5" [(ngModel)]="orderLineModel.count" [min]="1" (onBlur)="updateOrderLine(orderLineModel)"></p-spinner></td>
             <td>
               <button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger"
                       (click)="deleteGoodFromOrder(orderLineModel)">

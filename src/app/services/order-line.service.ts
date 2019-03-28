@@ -15,10 +15,14 @@ export class OrderLineService {
     return this.http.get<OrderLineModel[]>(this.userUrl + 'all');
   }
 
-  public saveOrderLine(orderModel: OrderLineModel): Observable<any> {
-    return this.http.post<any>(this.userUrl + 'save', orderModel, {
-      observe: 'response'
-    });
+  public saveOrderLine(orderModel: OrderLineModel): Observable<OrderLineModel> {
+    return this.http.post<OrderLineModel>(this.userUrl + 'save', orderModel);
+  }
+
+  public updateOrderLine(orderModel: OrderLineModel): Observable<any> {
+    return this.http.post<any>(this.userUrl + 'save', orderModel,{
+        observe: 'response'
+      });
   }
 
   public deleteOrderLineById(id: number): Observable<any> {

@@ -1,6 +1,10 @@
 # Clientstore
-
+This project is an exmple of client of store using Angular 7. Client sends and receives models to server and back using HttpClient.   
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
+
+# Auxiliary librarys
+Bootstrap
+PrimeNG
 
 ## Development server
 
